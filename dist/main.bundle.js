@@ -422,7 +422,12 @@ var DataService = (function () {
     };
     DataService.prototype.getBookById = function (id) {
         console.log('In getBookById()');
-        return this.http.get("/api/books/" + id);
+        return this.http.get("/api/books/" + id, {
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
+                'Accept': 'application/jason',
+                'Authorization': 'my-token'
+            })
+        });
     };
     DataService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
