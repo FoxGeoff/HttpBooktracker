@@ -421,7 +421,8 @@ var DataService = (function () {
         return this.http.get('/api/books');
     };
     DataService.prototype.getBookById = function (id) {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["a" /* allBooks */].find(function (book) { return book.bookID === id; });
+        console.log('In getBookById()');
+        return this.http.get("/api/books/" + id);
     };
     DataService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -599,8 +600,10 @@ var EditBookComponent = (function () {
         this.dataService = dataService;
     }
     EditBookComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var bookID = parseInt(this.route.snapshot.params['id']);
-        this.selectedBook = this.dataService.getBookById(bookID);
+        this.dataService.getBookById(bookID)
+            .subscribe(function (data) { return _this.selectedBook = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting the select book'); });
     };
     EditBookComponent.prototype.setMostPopular = function () {
         this.dataService.setMostPopularBook(this.selectedBook);
