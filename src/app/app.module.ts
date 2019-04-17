@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditReaderComponent } from './edit-reader/edit-reader.component';
 import { CoreModule } from './core/core.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,9 @@ import { HttpClient } from '@angular/common/http';
     FormsModule,
     CoreModule,
     // import HttpClientModule after BrowserModule.
-    HttpClient,
+    HttpClientModule,
   ],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -272,8 +272,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_10__core_core_module__["a" /* CoreModule */],
                 // import HttpClientModule after BrowserModule.
-                __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["a" /* HttpClient */],
+                __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */],
             ],
+            providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
@@ -416,7 +417,8 @@ var DataService = (function () {
         return __WEBPACK_IMPORTED_MODULE_2_app_data__["b" /* allReaders */].find(function (reader) { return reader.readerID === id; });
     };
     DataService.prototype.getAllBooks = function () {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["a" /* allBooks */];
+        console.log('In getAllBooks()');
+        return this.http.get('/api/books');
     };
     DataService.prototype.getBookById = function (id) {
         return __WEBPACK_IMPORTED_MODULE_2_app_data__["a" /* allBooks */].find(function (book) { return book.bookID === id; });
@@ -512,7 +514,9 @@ var DashboardComponent = (function () {
         this.title = title;
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        this.allBooks = this.dataService.getAllBooks();
+        var _this = this;
+        this.dataService.getAllBooks()
+            .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting books'); });
         this.allReaders = this.dataService.getAllReaders();
         this.mostPopularBook = this.dataService.mostPopularBook;
         this.title.setTitle("Book Tracker " + __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* VERSION */].full);
