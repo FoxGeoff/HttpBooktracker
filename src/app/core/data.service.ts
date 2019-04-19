@@ -30,7 +30,7 @@ export class DataService {
     return this.http.get<Reader>(`/api/readers/${id}`);
   }
 
-  getAllBooks(): Observable<Book[] | BookTrackerError> {
+  getAllBooks(): Observable< Book[] | BookTrackerError> {
     console.log('In getAllBooks()')
     return this.http.get<Book[]>('/api/errors/500')
       .pipe(
