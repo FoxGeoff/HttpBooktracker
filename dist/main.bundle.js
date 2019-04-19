@@ -431,6 +431,23 @@ var DataService = (function () {
             })
         });
     };
+    DataService.prototype.addBook = function (newBook) {
+        return this.http.post('/api/books', newBook, {
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
+                'Content-Type': 'application/json'
+            })
+        });
+    };
+    DataService.prototype.updateBook = function (updatedBook) {
+        return this.http.put("/api/books/" + updatedBook.bookID, updatedBook, {
+            headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({
+                'Content-Type': 'application/json'
+            })
+        });
+    };
+    DataService.prototype.deleteBook = function (bookID) {
+        return this.http.delete("/api/books/" + bookID);
+    };
     DataService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__logger_service__["a" /* LoggerService */]])

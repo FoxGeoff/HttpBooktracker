@@ -42,6 +42,26 @@ export class DataService {
           'Accept': 'application/jason',
           'Authorization': 'my-token'
         })
-      });
+      }
+    );
+  }
+
+  addBook(newBook: Book): Observable<Book> {
+    return this.http.post<Book>('/api/books', newBook, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  updateBook(updatedBook: Book): Observable<void> {
+    return this.http.put<void>(`/api/books/${updatedBook.bookID}`, updatedBook, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  deleteBook(bookID: number): Observable<void> {
+    return this.http.delete<void>(`/api/books/${bookID}`);
   }
 }
