@@ -37,13 +37,13 @@
     },
     {
         "bookID": 7,
-        "title": "GEoff's life",
+        "title": "Geoff's life",
         "author": "Geoff",
         "publicationYear": "2019"
     },
     {
         "bookID": 8,
-        "title": "life of Geoff",
+        "title": "Life of Geoff",
         "author": "Fox",
         "publicationYear": "2019"
     }

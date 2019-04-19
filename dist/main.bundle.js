@@ -52,7 +52,7 @@ var AddBookComponent = (function () {
         newBook.bookID = 0;
         console.log(newBook);
         this.dataService.addBook(newBook)
-            .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.warn('Saved new book'); });
+            .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.info('Saved new book'); });
     };
     AddBookComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -638,7 +638,9 @@ var EditBookComponent = (function () {
         this.dataService.setMostPopularBook(this.selectedBook);
     };
     EditBookComponent.prototype.saveChanges = function () {
-        console.warn('Save changes to book not yet implemented.');
+        var _this = this;
+        this.dataService.updateBook(this.selectedBook)
+            .subscribe(function (data) { return console.log(_this.selectedBook.title + " updated sucessfully."); }, function (err) { return console.log(err); }, function () { return console.info('Save changes to book'); });
     };
     EditBookComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

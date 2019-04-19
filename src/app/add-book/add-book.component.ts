@@ -23,7 +23,7 @@ export class AddBookComponent implements OnInit {
       .subscribe(
         (data:Book) => console.log(data),
         (err:any) => console.log(err),
-        () => console.warn('Saved new book')
+        () => console.info('Saved new book')
       );
   }
 
