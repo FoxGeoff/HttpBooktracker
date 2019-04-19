@@ -392,6 +392,8 @@ var CoreModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_data__ = __webpack_require__("../../../../../src/app/data.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__logger_service__ = __webpack_require__("../../../../../src/app/core/logger.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_models_bookTrackerError__ = __webpack_require__("../../../../../src/app/models/bookTrackerError.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators__ = __webpack_require__("../../../../rxjs/_esm5/operators/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -401,6 +403,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -423,8 +427,17 @@ var DataService = (function () {
         return this.http.get("/api/readers/" + id);
     };
     DataService.prototype.getAllBooks = function () {
+        var _this = this;
         console.log('In getAllBooks()');
-        return this.http.get('/api/books');
+        return this.http.get('/api/books')
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["a" /* catchError */])(function (err) { return _this.handleHttpError(err); }));
+    };
+    DataService.prototype.handleHttpError = function (err) {
+        var dataError = new __WEBPACK_IMPORTED_MODULE_4_app_models_bookTrackerError__["a" /* BookTrackerError */]();
+        dataError.errorNumber = 100;
+        dataError.message = err.statusText;
+        dataError.friendlyMessage = 'An error occured retiving data';
+        return throwError(dataError);
     };
     DataService.prototype.getBookById = function (id) {
         console.log('In getBookById()');
