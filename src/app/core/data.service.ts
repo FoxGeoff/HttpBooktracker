@@ -19,8 +19,9 @@ export class DataService {
     this.mostPopularBook = popularBook;
   }
 
-  getAllReaders(): Reader[] {
-    return allReaders;
+  getAllReaders(): Observable<Reader[]> {
+    console.log('In getAllReaders()');
+    return this.http.get<Reader[]>('/api/readers');
   }
 
   getReaderById(id: number): Reader {

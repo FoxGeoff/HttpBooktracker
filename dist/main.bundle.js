@@ -411,7 +411,8 @@ var DataService = (function () {
         this.mostPopularBook = popularBook;
     };
     DataService.prototype.getAllReaders = function () {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["b" /* allReaders */];
+        console.log('In getAllReaders()');
+        return this.http.get('/api/readers');
     };
     DataService.prototype.getReaderById = function (id) {
         return __WEBPACK_IMPORTED_MODULE_2_app_data__["b" /* allReaders */].find(function (reader) { return reader.readerID === id; });
@@ -523,7 +524,8 @@ var DashboardComponent = (function () {
         var _this = this;
         this.dataService.getAllBooks()
             .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting books'); });
-        this.allReaders = this.dataService.getAllReaders();
+        this.dataService.getAllReaders()
+            .subscribe(function (data) { return _this.allReaders = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting readers'); });
         this.mostPopularBook = this.dataService.mostPopularBook;
         this.title.setTitle("Book Tracker " + __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* VERSION */].full);
     };
