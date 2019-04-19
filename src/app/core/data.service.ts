@@ -34,7 +34,7 @@ export class DataService {
     console.log('In getAllBooks()')
     return this.http.get<Book[]>('/api/errors/500')
       .pipe(
-        catchError(err => this.handleHttpError(err))
+        catchError(err => this.handleHttpError(err)) 
       );
 
   }

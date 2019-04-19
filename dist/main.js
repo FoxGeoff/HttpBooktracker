@@ -567,7 +567,7 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService.getAllBooks()
-            .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting books'); });
+            .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.error(err.friendlyMessage); }, function () { return console.log('All done getting books'); });
         this.dataService.getAllReaders()
             .subscribe(function (data) { return _this.allReaders = data; }, function (err) { return console.log(err); }, function () { return console.log('All done getting readers'); });
         this.mostPopularBook = this.dataService.mostPopularBook;
