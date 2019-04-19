@@ -17,12 +17,17 @@ export class EditReaderComponent implements OnInit {
   currentBadge: string;
 
   constructor(private route: ActivatedRoute,
-              private dataService: DataService,
-              private badgeService: BadgeService) { }
+    private dataService: DataService,
+    private badgeService: BadgeService) { }
 
   ngOnInit() {
     let readerID: number = parseInt(this.route.snapshot.params['id']);
-    this.selectedReader = this.dataService.getReaderById(readerID);
+    this.dataService.getReaderById(readerID)
+      .subscribe(
+        (data: Reader) => this.selectedReader = data,
+        (err: any) => console.log(err),
+        () => console.log('Done getting selected reader')
+      );
     this.currentBadge = this.badgeService.getReaderBadge(this.selectedReader.totalMinutesRead);
   }
 

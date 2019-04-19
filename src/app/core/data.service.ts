@@ -24,8 +24,9 @@ export class DataService {
     return this.http.get<Reader[]>('/api/readers');
   }
 
-  getReaderById(id: number): Reader {
-    return allReaders.find(reader => reader.readerID === id);
+  getReaderById(id: number): Observable<Reader> {
+    console.log('In getReaderById()');
+    return this.http.get<Reader>(`/api/readers/${id}`);
   }
 
   getAllBooks(): Observable<Book[]> {
@@ -34,7 +35,7 @@ export class DataService {
   }
 
   getBookById(id: number): Observable<Book> {
-    console.log('In getBookById()')
+    console.log('In getBookById()');
     return this.http.get<Book>(`/api/books/${id}`,
       {
         headers: new HttpHeaders({

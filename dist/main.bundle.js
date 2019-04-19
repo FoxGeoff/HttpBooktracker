@@ -415,7 +415,8 @@ var DataService = (function () {
         return this.http.get('/api/readers');
     };
     DataService.prototype.getReaderById = function (id) {
-        return __WEBPACK_IMPORTED_MODULE_2_app_data__["b" /* allReaders */].find(function (reader) { return reader.readerID === id; });
+        console.log('In getReaderById()');
+        return this.http.get("/api/readers/" + id);
     };
     DataService.prototype.getAllBooks = function () {
         console.log('In getAllBooks()');
@@ -555,7 +556,7 @@ var DashboardComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return allReaders; });
+/* unused harmony export allReaders */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allBooks; });
 var allReaders = [
     { readerID: 1, name: 'Marie', weeklyReadingGoal: 400, totalMinutesRead: 5600 },
@@ -670,8 +671,10 @@ var EditReaderComponent = (function () {
         this.badgeService = badgeService;
     }
     EditReaderComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var readerID = parseInt(this.route.snapshot.params['id']);
-        this.selectedReader = this.dataService.getReaderById(readerID);
+        this.dataService.getReaderById(readerID)
+            .subscribe(function (data) { return _this.selectedReader = data; }, function (err) { return console.log(err); }, function () { return console.log('Done getting selected reader'); });
         this.currentBadge = this.badgeService.getReaderBadge(this.selectedReader.totalMinutesRead);
     };
     EditReaderComponent.prototype.saveChanges = function () {
