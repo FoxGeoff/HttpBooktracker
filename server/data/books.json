@@ -34,17 +34,5 @@
         "title": "Alice's Adventures in Wonderland",
         "author": "Lewis Carroll",
         "publicationYear": "1865"
-    },
-    {
-        "bookID": 7,
-        "title": "Geoff's life",
-        "author": "Geoff",
-        "publicationYear": "2019"
-    },
-    {
-        "bookID": 8,
-        "title": "Life of Geoff",
-        "author": "Fox",
-        "publicationYear": "2019"
     }
 ]
