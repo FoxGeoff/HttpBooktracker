@@ -11,6 +11,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { EditReaderComponent } from './edit-reader/edit-reader.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BookTrackerErrorHandlerService } from './core/book-tracker-error-handler.service';
 
 @NgModule({
   declarations: [

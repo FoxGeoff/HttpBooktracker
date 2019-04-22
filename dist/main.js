@@ -371,7 +371,7 @@ var CoreModule = /** @class */ (function () {
             providers: [
                 _logger_service__WEBPACK_IMPORTED_MODULE_3__["LoggerService"],
                 _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"],
-                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_6__["BookTrackerErrorHandlerService"] }
+                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_6__["BookTrackerErrorHandlerService"] },
             ]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"])()),
