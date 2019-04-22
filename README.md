@@ -19,8 +19,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   }
  ```
  ## Using http resolvers
- * Run: ```ng g s core/BookResolver --nospec --dry-run```
+ * (1) Run: ```ng g s core/BookResolver --nospec --dry-run```
+ * Code BookResolverService
+ * (2) Update route
+ ```
+ { path: 'dashboard', component: DashboardComponent, resolve:{resolvedBooks: BooksResolverService} },
+ ```
+ * (3) Replace the Dashboard Component method
+ ```
 
+ ```
  ## Using http Interceptor
 
  ## Using http Interceptors with cache

@@ -29,20 +29,20 @@ export class DataService {
     console.log('In getReaderById()');
     return this.http.get<Reader>(`/api/readers/${id}`);
   }
-
+  
   getAllBooks(): Observable< Book[] | BookTrackerError> {
-    console.log('In getAllBooks()')
+    console.log('In getAllBooks()'); 
     return this.http.get<Book[]>('/api/books')
       .pipe(
         catchError(err => this.handleHttpError(err)) 
       );
-
   }
+ 
   private handleHttpError(err: HttpErrorResponse): ObservableInput<BookTrackerError> {
     let dataError = new BookTrackerError();
     dataError.errorNumber = 100;
     dataError.message = err.statusText;
-    dataError.friendlyMessage = 'An error occured retiving data';
+    dataError.friendlyMessage = 'An error occured retriving data';
     return throwError(dataError);
   }
 

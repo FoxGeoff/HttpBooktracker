@@ -5,12 +5,12 @@ var router = express.Router();
 
 /* GET all books and POST new books */
 router.route('/')
-    .get(function(req, res) {
+    .get(function (req, res) {
         var data = getBookData();
         res.send(data);
     })
 
-    .post(function(req, res) {
+    .post(function (req, res) {
 
         var data = getBookData();
         var nextID = getNextAvailableID(data);
@@ -26,7 +26,7 @@ router.route('/')
 
         saveBookData(data);
 
-//        res.set('Content-Type', 'application/json');
+        //        res.set('Content-Type', 'application/json');
         res.status(201).send(newBook);
     });
 
@@ -34,28 +34,28 @@ router.route('/')
 /* GET, PUT and DELETE individual books */
 router.route('/:id')
 
-    .get(function(req, res) {
+    .get(function (req, res) {
 
         //console.log('Retrieving book id: ' + req.params.id);
 
         var data = getBookData();
 
-        var matchingBooks = data.filter(function(item) {
+        var matchingBooks = data.filter(function (item) {
             return item.bookID == req.params.id;
         });
 
-        if(matchingBooks.length === 0) {
+        if (matchingBooks.length === 0) {
             res.sendStatus(404);
         } else {
             res.send(matchingBooks[0]);
         }
     })
 
-    .delete(function(req, res) {
+    .delete(function (req, res) {
 
         var data = getBookData();
 
-        var pos = data.map(function(e) {
+        var pos = data.map(function (e) {
             return e.bookID;
         }).indexOf(parseInt(req.params.id, 10));
 
@@ -70,15 +70,15 @@ router.route('/:id')
 
     })
 
-    .put(function(req, res) {
+    .put(function (req, res) {
 
         var data = getBookData();
 
-        var matchingBooks = data.filter(function(item) {
+        var matchingBooks = data.filter(function (item) {
             return item.bookID == req.params.id;
         });
 
-        if(matchingBooks.length === 0) {
+        if (matchingBooks.length === 0) {
             res.sendStatus(404);
         } else {
 
@@ -97,9 +97,9 @@ function getNextAvailableID(allBooks) {
 
     var maxID = 0;
 
-    allBooks.forEach(function(element, index, array) {
+    allBooks.forEach(function (element, index, array) {
 
-        if(element.bookID > maxID) {
+        if (element.bookID > maxID) {
             maxID = element.bookID;
         }
 
