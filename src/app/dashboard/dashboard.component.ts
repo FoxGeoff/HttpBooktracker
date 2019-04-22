@@ -21,13 +21,14 @@ export class DashboardComponent implements OnInit {
     private title: Title) { }
 
   ngOnInit() {
+    /* Updated to use 'BookResolverService' */
     this.dataService.getAllBooks()
       .subscribe(
         (data: Book[]) => this.allBooks = data,
         (err: BookTrackerError) => console.error(err.friendlyMessage),
         () => console.log('All done getting books')
       );
-
+    
     this.dataService.getAllReaders()
       .subscribe(
         (data: Reader[]) => this.allReaders = data,

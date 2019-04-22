@@ -19,6 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   }
  ```
  ## Using http resolvers
+ * Run: ```ng g s core/BookResolver --nospec --dry-run```
 
  ## Using http Interceptor
 

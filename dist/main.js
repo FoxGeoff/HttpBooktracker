@@ -526,6 +526,7 @@ var DashboardComponent = /** @class */ (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        /* Updated to use 'BookResolverService' */
         this.dataService.getAllBooks()
             .subscribe(function (data) { return _this.allBooks = data; }, function (err) { return console.error(err.friendlyMessage); }, function () { return console.log('All done getting books'); });
         this.dataService.getAllReaders()
