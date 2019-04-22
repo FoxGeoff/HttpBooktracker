@@ -16,7 +16,7 @@ import { BookTrackerErrorHandlerService } from './book-tracker-error-handler.ser
   providers: [
     LoggerService, 
     DataService, 
-    { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService },
+   // { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService },
   ]
 })
 export class CoreModule {

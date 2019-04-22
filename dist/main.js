@@ -297,43 +297,6 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/core/book-tracker-error-handler.service.ts":
-/*!************************************************************!*\
-  !*** ./src/app/core/book-tracker-error-handler.service.ts ***!
-  \************************************************************/
-/*! exports provided: BookTrackerErrorHandlerService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookTrackerErrorHandlerService", function() { return BookTrackerErrorHandlerService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var app_models_bookTrackerError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/models/bookTrackerError */ "./src/app/models/bookTrackerError.ts");
-
-
-
-var BookTrackerErrorHandlerService = /** @class */ (function () {
-    function BookTrackerErrorHandlerService() {
-    }
-    BookTrackerErrorHandlerService.prototype.handleError = function (error) {
-        var customError = new app_models_bookTrackerError__WEBPACK_IMPORTED_MODULE_2__["BookTrackerError"]();
-        customError.errorNumber = 200;
-        customError.message = error.message;
-        customError.friendlyMessage = 'An error occurred. Please try again.';
-        console.log(customError);
-    };
-    BookTrackerErrorHandlerService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], BookTrackerErrorHandlerService);
-    return BookTrackerErrorHandlerService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/core/core.module.ts":
 /*!*************************************!*\
   !*** ./src/app/core/core.module.ts ***!
@@ -350,8 +313,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logger_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./logger.service */ "./src/app/core/logger.service.ts");
 /* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data.service */ "./src/app/core/data.service.ts");
 /* harmony import */ var app_core_module_import_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! app/core/module-import-guard */ "./src/app/core/module-import-guard.ts");
-/* harmony import */ var _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book-tracker-error-handler.service */ "./src/app/core/book-tracker-error-handler.service.ts");
-
 
 
 
@@ -371,7 +332,6 @@ var CoreModule = /** @class */ (function () {
             providers: [
                 _logger_service__WEBPACK_IMPORTED_MODULE_3__["LoggerService"],
                 _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"],
-                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _book_tracker_error_handler_service__WEBPACK_IMPORTED_MODULE_6__["BookTrackerErrorHandlerService"] },
             ]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"])()),
